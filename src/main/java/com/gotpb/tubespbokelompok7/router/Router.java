@@ -1,5 +1,6 @@
 package com.gotpb.tubespbokelompok7.router;
 
+import com.gotpb.tubespbokelompok7.controllers.Controller;
 import com.gotpb.tubespbokelompok7.views.View;
 import javafx.stage.Stage;
 
@@ -50,6 +51,20 @@ public class Router {
 
     public boolean openView(View view) {
         return view.open(STAGE);
+    }
+
+    public View getView(String name) {
+        for (View view: this.viewList) {
+            if (view.name.equals(name)) {
+                return view;
+            }
+        }
+
+        return null;
+    }
+
+    public <T> T getController(String name) {
+        return this.getView(name).<T>getController();
     }
 
     public ArrayList<View> getViewList() {

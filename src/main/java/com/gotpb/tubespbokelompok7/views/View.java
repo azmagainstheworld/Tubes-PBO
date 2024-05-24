@@ -53,7 +53,7 @@ public class View {
         this.fileName = fileName;
     }
 
-    public Controller getController() {
+    public <T> T getController() {
         return this.root.getController();
     }
 }

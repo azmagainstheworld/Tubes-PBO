@@ -3,10 +3,7 @@ package com.gotpb.tubespbokelompok7;
 import com.gotpb.tubespbokelompok7.controllers.Controller;
 import com.gotpb.tubespbokelompok7.controllers.LoginController;
 import com.gotpb.tubespbokelompok7.router.Router;
-import com.gotpb.tubespbokelompok7.views.DashboardView;
-import com.gotpb.tubespbokelompok7.views.LoginView;
-import com.gotpb.tubespbokelompok7.views.RegisterView;
-import com.gotpb.tubespbokelompok7.views.View;
+import com.gotpb.tubespbokelompok7.views.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,6 +19,7 @@ public class HelloApplication extends Application {
                 new LoginView(),
                 new RegisterView(),
                 new DashboardView(),
+                new VideoView(),
         };
 
         Router router = Router.getInstance(stage);

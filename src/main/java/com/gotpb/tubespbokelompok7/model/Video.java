@@ -37,12 +37,16 @@ public class Video {
         return namaFile;
     }
 
+    public String getFileLocation() {
+        return "videos/" + namaFile;
+    }
+
     public URL getFile() {
-        return HelloApplication.class.getResource("videos/" + this.getNamaFile());
+        return HelloApplication.class.getResource(this.getFileLocation());
     }
 
     public InputStream getFileAsStream() {
-        return HelloApplication.class.getResourceAsStream("videos/" + this.getNamaFile());
+        return HelloApplication.class.getResourceAsStream(this.getFileLocation());
     }
 
     public String getNamaGambar() {

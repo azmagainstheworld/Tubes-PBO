@@ -12,11 +12,12 @@ import javafx.scene.text.Font;
 
 public class VideoItemComponent extends HBox {
     public Video video;
+    public Button thumbnailBtn;
 
     public VideoItemComponent(Video video) {
         this.video = video;
 
-        Button thumbnailBtn = this.getThumbnailComponent();
+        this.thumbnailBtn = this.getThumbnailComponent();
         VBox descriptionComponent = this.getDescriptionComponent();
 
         HBox container = new HBox();

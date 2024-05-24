@@ -1,6 +1,7 @@
 package com.gotpb.tubespbokelompok7.controllers;
 
 import com.gotpb.tubespbokelompok7.HelloApplication;
+import com.gotpb.tubespbokelompok7.model.Video;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,17 +29,17 @@ public class VideoController {
     @FXML private TextField fieldKomentar;
     @FXML private MediaView mediaView;
 
-    private File file;
     private Media media;
     private MediaPlayer mediaPlayer;
+    private Video video;
 
-    @FXML
-    private void initialize() {
-        file = new File("src/main/java/com/gotpb/tubespbokelompok7/video 1.mp4");
-        media = new Media(file.toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
-        mediaView.setMediaPlayer(mediaPlayer);
-        mediaPlayer.play();
+    public void initVideo(Video video) {
+        this.video = video;
+
+        this.media = new Media(video.getFile().toString());
+        this.mediaPlayer = new MediaPlayer(this.media);
+        this.mediaView.setMediaPlayer(this.mediaPlayer);
+        this.mediaPlayer.play();
     }
 
     public void play() {

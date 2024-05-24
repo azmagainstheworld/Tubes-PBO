@@ -3,6 +3,7 @@ package com.gotpb.tubespbokelompok7.controllers;
 import com.gotpb.tubespbokelompok7.HelloApplication;
 import com.gotpb.tubespbokelompok7.model.Testimoni;
 import com.gotpb.tubespbokelompok7.model.Video;
+import com.gotpb.tubespbokelompok7.router.Router;
 import com.gotpb.tubespbokelompok7.views.components.TestimoniComponent;
 import com.gotpb.tubespbokelompok7.views.components.VideoItemComponent;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -41,7 +43,6 @@ public class DashboardController {
     }
 
     public void initialize() {
-        System.out.println("OKE");
         this.buildVideoList();
     }
 
@@ -109,8 +110,19 @@ public class DashboardController {
 
         for (Video video: this.videoList) {
             VideoItemComponent item = new VideoItemComponent(video);
+            item.setOnMouseClicked(e -> this.onVideoListClicked(e, video));
+            item.thumbnailBtn.setOnMouseClicked(e -> this.onVideoListClicked(e, video));
+
             this.videoListContainer.getChildren().add(item);
         }
+    }
+
+    private void onVideoListClicked(MouseEvent mouseEvent, Video video) {
+        Router router = Router.getInstance();
+        router.open("video");
+
+        VideoController controller = router.getController("video");
+        controller.initVideo(video);
     }
 }
 
